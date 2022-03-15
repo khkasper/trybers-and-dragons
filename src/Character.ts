@@ -1,6 +1,7 @@
 import Fighter from './Fighter';
 import Race, { Elf } from './Races';
 import Archetype, { Mage } from './Archetypes';
+import Monster from './Monster';
 import Energy from './Energy';
 import getRandomInt from './utils';
 
@@ -74,7 +75,7 @@ export default class Character implements Fighter {
     return this._lifePoints;
   }
 
-  attack(enemy: Fighter): void {
+  attack(enemy: Fighter | Monster): void {
     enemy.receiveDamage(this._strength);
   }
 
@@ -92,7 +93,7 @@ export default class Character implements Fighter {
     this._lifePoints = this._maxLifePoints;
   }
 
-  special(enemy: Fighter): void {
+  special(enemy: Fighter | Monster): void {
     console.log(`
       Uses Mage's Sword.
       A floating magic blade that strikes it's opponents.
